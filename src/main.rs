@@ -1,5 +1,3 @@
-#![feature(byte_slice_trim_ascii)]
-
 use clap::Parser;
 use duckdb::{params, Connection, DropBehavior, Error};
 use humantime::format_duration;
@@ -177,6 +175,7 @@ fn store_entity(appender_helper: &mut AppenderHelper, entity: Entity) -> Result<
         EntityId(id) => Id::Qid(id),
         PropertyId(id) => Id::Pid(id),
         LexemeId(id) => Id::Lid(id),
+        _ => todo!(),
     });
 
     // We are only interested in the English label and description of the entity. This is because
